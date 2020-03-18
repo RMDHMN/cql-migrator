@@ -1,0 +1,6 @@
+# for production :
+#migrator_keyspace_replication: "{'class': 'NetworkTopologyStrategy', 'DC1': 3, 'DC2': 3, 'DC3': 3 }"
+# for pre-production
+#migrator_keyspace_replication: "{'class': 'NetworkTopologyStrategy', 'DC1': 1, 'DC2': 1, 'DC3': 1 }"
+# for integ and recettes :
+migrator_keyspace_replication: "{'class': 'SimpleStrategy', 'replication_factor': 1 }"

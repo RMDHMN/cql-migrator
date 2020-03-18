@@ -1,0 +1,20 @@
+- name: create migrator directory
+  file:
+    path: "{{ install_dir }}/migrator"
+    state: directory
+    owner: "{{ ansible_user }}"
+    group: "{{ ansible_group }}"
+  become: true
+
+- name: copy migrator files
+  template:
+    src: "{{ item }}"
+    dest: "{{ install_dir }}/migrator/{{ item }}"
+  with_items:
+    - migrator.sh
+    - create-migrator-schema.cql
+
+- name: chmod +x migrator.sh
+  file:
+    dest: "{{ install_dir }}/migrator/migrator.sh"
+    mode: a+x
